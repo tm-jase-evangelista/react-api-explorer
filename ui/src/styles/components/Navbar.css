@@ -6,11 +6,12 @@
 
   position: fixed;
   right: 0;
-  background-color: lightblue;
+  background-color: darkcyan;
   overflow-y: auto;
 }
 
 .navbar h1 {
   font-size: 1em;
   text-align: center;
+  color: white;
 }
