@@ -1,13 +1,20 @@
 import '../styles/components/MainPage.css';
 import '../styles/global.css';
+import { useState } from "react";
+import { Navbar } from './Navbar';
+
 export const MainPage = () => {
+
+  const [isNavbarToggled, setNavbarToggle] = useState(false);
 
   const handleOnClick = () => {
     console.log("button clicked!");
+    setNavbarToggle(!isNavbarToggled);
   }
 
   return (
     <div className="main-page">
+      {isNavbarToggled && <Navbar/>}
       <button
         className='btn-primary'
         onClick={handleOnClick}>Explore web APIs</button>
