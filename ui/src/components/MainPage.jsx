@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { useState } from "react";
 import { Navbar } from './Navbar';
 import { useFetchProviders } from "../utils/useFetchProviders";
+import { Dropdown } from './Dropdown';
 
 export const MainPage = () => {
   const { data, loading, error} = useFetchProviders();
@@ -24,7 +25,20 @@ export const MainPage = () => {
 
   return (
     <div className="main-page">
-      {isNavbarToggled && <Navbar/>}
+      {isNavbarToggled &&
+        <Navbar>
+          <div>
+          {data && data.map((apiData) => {
+            return (
+              <Dropdown
+                key={apiData.name}
+                data={apiData}
+              />
+            )
+          })}
+          </div>
+        </Navbar>
+      }
       <button
         className='btn-primary'
         onClick={handleOnClick}>Explore web APIs</button>

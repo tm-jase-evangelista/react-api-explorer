@@ -1,8 +1,9 @@
 import '../styles/components/Dropdown.css';
-import { useState } from "react"
+import { useState } from "react";
 
-export const Dropdown = () => {
+export const Dropdown = ({ data }) => {
   const [isToggled, setToggle] = useState(false);
+  const apiList = Object.keys(data.apis);
 
   const handleToggle = () => {
     setToggle(!isToggled);
@@ -14,13 +15,33 @@ export const Dropdown = () => {
         className="row row-toggle"
         onClick={handleToggle}
       >
-        <div className="label">API Name</div>
-        {isToggled ? (<div>Arrow-Up</div>) : (<div>Arrow-Down</div>)}
+        <div className="label">{data.name}</div>
+        {isToggled ? (
+          <img
+            src={process.env.PUBLIC_URL + '/dropdown/arrow-up.png'}
+            alt="Arrow Up"
+            width="5%"
+          />
+        ) : (
+          <img
+            src={process.env.PUBLIC_URL + '/dropdown/arrow-down.png'}
+            alt="Arrow Down"
+            width="5%"
+          />
+        )}
       </div>
       {isToggled && (
-      <div className="row row-redirect">
-        <div>Logo</div>
-        <div className="label">Title</div>
+      <div>
+        {data && apiList.map((api) => {
+          const logo = data.apis[api].info['x-logo'].url;
+          const title = data.apis[api].info.title;
+          return (
+          <div className="row row-redirect">
+            <img src={logo} width="5%" />
+            <div className="label">{title}</div>
+          </div>
+          )
+        })}
       </div>
       )}
     </div>
