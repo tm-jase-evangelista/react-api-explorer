@@ -1,0 +1,17 @@
+.navbar {
+  width: 35vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  right: 0;
+  background-color: darkcyan;
+  overflow-y: auto;
+}
+
+.navbar h1 {
+  font-size: 1em;
+  text-align: center;
+  color: white;
+}

@@ -1,0 +1,30 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5em;
+}
+
+.toggled {
+  background-color: black;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row:hover {
+  cursor: pointer;
+}
+
+.row-toggle {
+  justify-content: space-between;
+}
+
+.row-redirect {
+  justify-content: flex-start;
+}
+
+.label {
+  color: white;
+}
