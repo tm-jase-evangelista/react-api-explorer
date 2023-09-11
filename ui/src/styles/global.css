@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn-primary {
+  color: white;
+  /* Note: temp color */
+  background-color: darkblue;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5em;
+  padding: 0.5em;
+}
+
+.btn-primary:hover {
+  cursor: pointer;
+  /* Note: temp color */
+  background-color: black;
+}
