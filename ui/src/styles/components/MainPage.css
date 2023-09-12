@@ -1,6 +1,4 @@
 .main-page {
-  /* Note: temp color */
-  background-color: darkcyan; 
   height: 100%;
   display: flex;
   justify-content: center;
