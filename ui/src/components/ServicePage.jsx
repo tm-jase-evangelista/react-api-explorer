@@ -63,14 +63,16 @@ export const ServicePage = () => {
               <div className='content-entry'>
                 <h2>Contact</h2>
                 <table className='table-contact'>
-                  {infoList.map((info) => {
-                    return (
-                      <tr key={info.key} className="contact-entry">
-                        <td>{info.key}</td>
-                        <td>{info.value}</td>
-                      </tr>
-                    )
-                  })}
+                  <tbody>
+                    {infoList.map((info) => {
+                      return (
+                        <tr key={info.key} className="contact-entry">
+                          <td>{info.key}</td>
+                          <td>{info.value}</td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
                 </table>
               </div>
             )}
