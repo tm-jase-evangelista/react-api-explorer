@@ -4,7 +4,7 @@ import axios from "axios";
 // TODO: move to a .env
 const API_PROVIDER_BASE_URL = "https://api.apis.guru/v2";
 
-export const useFetchProviders = () => {
+export const useFetchData = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,7 +17,6 @@ export const useFetchProviders = () => {
           name: item.config.api_name,
           apis: item.data.apis,
         }));
-        console.log(data);
         setData(data);
         setLoading(false);
       })
