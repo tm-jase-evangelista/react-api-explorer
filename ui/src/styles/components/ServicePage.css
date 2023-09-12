@@ -1,0 +1,51 @@
+.main-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  height: 100%;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding-top: 3em;
+  padding-bottom: 1em;
+}
+
+header > img {
+  width: 5em;
+  margin-right: 1em;
+}
+
+.content {
+  width: 60vw;
+  flex-grow: 1;
+}
+
+.content-entry {
+  margin-bottom: 1.5em;
+}
+
+.content-entry > h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.content-entry > p {
+  margin: 0;
+}
+
+.contact-entry > label {
+  margin-right: 1em;
+}
+
+.link {
+  width: fit-content;
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
