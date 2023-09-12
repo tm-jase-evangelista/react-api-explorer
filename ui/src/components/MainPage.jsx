@@ -2,12 +2,11 @@ import "../styles/components/MainPage.css";
 import "../styles/global.css";
 import { useState } from "react";
 import { Navbar } from "./Navbar";
-import { useFetchProviders } from "../utils/useFetchProviders";
 import { Dropdown } from "./Dropdown";
+import { useDataContext } from "../utils/DataContext";
 
 export const MainPage = () => {
-  const { data, loading, error } = useFetchProviders();
-
+  const { data, loading, error } = useDataContext();
   const [isNavbarToggled, setNavbarToggle] = useState(false);
 
   const handleOnClick = () => {

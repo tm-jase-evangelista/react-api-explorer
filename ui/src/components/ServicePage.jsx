@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useDataContext } from "../utils/DataContext";
 
 import "../styles/components/ServicePage.css";
 
 export const ServicePage = () => {
   const { provider, service } = useParams();
+  const { data, loading, error } = useDataContext();
 
   const [serviceData, setServiceData] = useState(null);
   const [infoList, setInfoList] = useState(null);
@@ -21,24 +23,39 @@ export const ServicePage = () => {
     return keyValuePairs;
   };
 
+  const setPageData = useCallback((service, apiMap) => {
+    if (service in apiMap) {
+      const serviceData = apiMap[service];
+      setServiceData(serviceData);
+      if ("contact" in serviceData.info) {
+        const infoList = iterateThroughObject(serviceData.info.contact);
+        setInfoList(infoList);
+      }
+    }
+  }, []);
+
   useEffect(() => {
-    axios
-      .get(`https://api.apis.guru/v2/${provider}.json`)
-      .then((res) => {
-        const apis = res.data.apis;
-        if (service in apis) {
-          const serviceData = apis[service];
-          setServiceData(serviceData);
-          if ("contact" in serviceData.info) {
-            const infoList = iterateThroughObject(serviceData.info.contact);
-            setInfoList(infoList);
-          }
+    if (!data && !loading && !error) {
+      axios
+        .get(`https://api.apis.guru/v2/${provider}.json`)
+        .then((res) => {
+          const apis = res.data.apis;
+          setPageData(service, apis);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      let providerData = null;
+      data.forEach((datum) => {
+        if (datum.name === provider) {
+          providerData = datum;
+          return;
         }
-      })
-      .catch((error) => {
-        console.error(error);
       });
-  }, [provider, service]);
+      if (providerData) setPageData(service, providerData.apis);
+    }
+  }, [data, error, loading, provider, service, setPageData]);
 
   return (
     <>
