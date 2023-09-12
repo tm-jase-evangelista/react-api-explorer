@@ -13,18 +13,18 @@ export const Dropdown = ({ data }) => {
   return (
     <div className={`dropdown ${isToggled ? "toggled" : ""}`}>
       <div className="row row-toggle" onClick={handleToggle}>
-        <div className="label">{data.name}</div>
+        <div className="label label-provider">{data.name}</div>
         {isToggled ? (
           <img
             src={process.env.PUBLIC_URL + "/dropdown/arrow-up.png"}
             alt="Arrow Up"
-            width="5%"
+            width="3%"
           />
         ) : (
           <img
             src={process.env.PUBLIC_URL + "/dropdown/arrow-down.png"}
             alt="Arrow Down"
-            width="5%"
+            width="3%"
           />
         )}
       </div>
@@ -32,16 +32,20 @@ export const Dropdown = ({ data }) => {
         <div>
           {data &&
             apiList.map((api) => {
-              const logo = data.apis[api].info["x-logo"].url;
-              const title = data.apis[api].info.title;
               return (
                 <Link
-                  key={title}
+                  key={`${data.name}-${api}`}
                   to={`/details/${data.name}/${api}`}
                   className="row row-redirect"
                 >
-                  <img src={logo} width="5%" />
-                  <div className="label">{title}</div>
+                  <img
+                    className="logo"
+                    src={data.apis[api].info["x-logo"].url}
+                    width="7.5%"
+                  />
+                  <div className="label label-service">
+                    {data.apis[api].info.title}
+                  </div>
                 </Link>
               );
             })}

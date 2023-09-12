@@ -1,7 +1,11 @@
 .dropdown {
   display: flex;
   flex-direction: column;
-  border-radius: 0.5em;
+  border-radius: 0.25em;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.75em;
+  margin-right: 0.75em;
 }
 
 .toggled {
@@ -19,12 +23,27 @@
 
 .row-toggle {
   justify-content: space-between;
+  margin-bottom: 0.75em;
 }
 
 .row-redirect {
   justify-content: flex-start;
+  margin-bottom: 0.5em;
+  text-decoration: none;
 }
 
 .label {
   color: white;
+}
+
+.label-provider {
+  font-size: 1.5em;
+}
+
+.label-service {
+  font-size: 1.25em;
+}
+
+.logo {
+  margin-right: 0.5em;
 }
