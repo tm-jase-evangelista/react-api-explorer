@@ -4,10 +4,12 @@ import { useState } from "react";
 import { Navbar } from "./Navbar";
 import { Dropdown } from "./Dropdown";
 import { useDataContext } from "../utils/DataContext";
+import { useNavbarContext } from "../utils/NavbarContext";
 
 export const MainPage = () => {
   const { data, loading, error } = useDataContext();
-  const [isNavbarToggled, setNavbarToggle] = useState(false);
+  const { navbarToggle } = useNavbarContext();
+  const [isNavbarToggled, setNavbarToggle] = useState(navbarToggle);
 
   const handleOnClick = () => {
     setNavbarToggle(!isNavbarToggled);

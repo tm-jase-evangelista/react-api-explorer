@@ -4,10 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import { useDataContext } from "../utils/DataContext";
 
 import "../styles/components/ServicePage.css";
+import { useNavbarContext } from "../utils/NavbarContext";
 
 export const ServicePage = () => {
   const { provider, service } = useParams();
   const { data, loading, error } = useDataContext();
+  const { setNavbarToggle } = useNavbarContext();
 
   const [serviceData, setServiceData] = useState(null);
   const [infoList, setInfoList] = useState(null);
@@ -96,7 +98,7 @@ export const ServicePage = () => {
               </div>
             )}
           </div>
-          <Link to="/" className="link">
+          <Link to="/" className="link" onClick={() => setNavbarToggle(true)}>
             <button className="btn-primary">Explore more APIs</button>
           </Link>
         </div>
