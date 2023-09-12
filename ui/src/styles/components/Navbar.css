@@ -5,8 +5,11 @@
   flex-direction: column;
 
   position: fixed;
+  top: 0;
   right: 0;
   overflow-y: auto;
+  background-color: #3F5E7A;
+  border-left: solid;
 }
 
 .navbar h1 {

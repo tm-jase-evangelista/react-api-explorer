@@ -11,7 +11,6 @@ export const MainPage = () => {
   const [isNavbarToggled, setNavbarToggle] = useState(false);
 
   const handleOnClick = () => {
-    console.log("button clicked!");
     setNavbarToggle(!isNavbarToggled);
   }
 
@@ -26,18 +25,21 @@ export const MainPage = () => {
   return (
     <div className="main-page">
       {isNavbarToggled &&
-        <Navbar>
-          <div>
-          {data && data.map((apiData) => {
-            return (
-              <Dropdown
-                key={apiData.name}
-                data={apiData}
-              />
-            )
-          })}
-          </div>
-        </Navbar>
+        <>
+          <div className='overlay' onClick={handleOnClick}/>
+          <Navbar>
+            <div>
+            {data && data.map((apiData) => {
+              return (
+                <Dropdown
+                  key={apiData.name}
+                  data={apiData}
+                />
+              )
+            })}
+            </div>
+          </Navbar>
+        </>
       }
       <button
         className='btn-primary'
