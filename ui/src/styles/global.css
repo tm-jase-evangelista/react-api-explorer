@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #3F5E7A;
 }
 
 code {
@@ -14,8 +15,7 @@ code {
 
 .btn-primary {
   color: white;
-  /* Note: temp color */
-  background-color: darkblue;
+  background-color: #049DD2;
   border: none;
   border-radius: 10px;
   font-size: 1.5em;
@@ -25,5 +25,5 @@ code {
 .btn-primary:hover {
   cursor: pointer;
   /* Note: temp color */
-  background-color: black;
+  background-color: #03759b;
 }

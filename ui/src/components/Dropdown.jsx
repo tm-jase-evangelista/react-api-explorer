@@ -1,5 +1,6 @@
 import '../styles/components/Dropdown.css';
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export const Dropdown = ({ data }) => {
   const [isToggled, setToggle] = useState(false);
@@ -36,10 +37,10 @@ export const Dropdown = ({ data }) => {
           const logo = data.apis[api].info['x-logo'].url;
           const title = data.apis[api].info.title;
           return (
-          <div className="row row-redirect">
+          <Link key={title} to={`/details/${data.name}/${api}`} className="row row-redirect">
             <img src={logo} width="5%" />
             <div className="label">{title}</div>
-          </div>
+          </Link>
           )
         })}
       </div>
