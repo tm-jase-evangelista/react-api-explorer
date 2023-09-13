@@ -1,9 +1,9 @@
 import { MainPage } from "./components/MainPage";
 import { ServicePage } from "./components/ServicePage";
 import { Routes, Route } from "react-router-dom";
-import { DataProvider } from "./utils/DataContext";
+import { DataProvider } from "./contexts/DataContext";
 import "./styles/App.css";
-import { NavbarProvider } from "./utils/NavbarContext";
+import { NavbarProvider } from "./contexts/NavbarContext";
 
 const App = () => {
   return (

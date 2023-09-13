@@ -1,18 +1,18 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDataContext } from "../utils/DataContext";
+import { useDataContext } from "../contexts/DataContext";
 
 import "../styles/components/ServicePage.css";
-import { useNavbarContext } from "../utils/NavbarContext";
+import { useNavbarContext } from "../contexts/NavbarContext";
 
 export const ServicePage = () => {
   const { provider, service } = useParams();
-  const { data, loading, error } = useDataContext();
+  const { data, loading } = useDataContext();
   const { setNavbarToggle } = useNavbarContext();
 
   const [serviceData, setServiceData] = useState(null);
   const [infoList, setInfoList] = useState(null);
+  const [noDataFound, setNoDataFound] = useState(false);
 
   const iterateThroughObject = (obj) => {
     const keyValuePairs = [];
@@ -33,21 +33,14 @@ export const ServicePage = () => {
         const infoList = iterateThroughObject(serviceData.info.contact);
         setInfoList(infoList);
       }
+    } else {
+      setNoDataFound(true);
+      console.log("no data found");
     }
   }, []);
 
   useEffect(() => {
-    if (!data && !loading && !error) {
-      axios
-        .get(`https://api.apis.guru/v2/${provider}.json`)
-        .then((res) => {
-          const apis = res.data.apis;
-          setPageData(service, apis);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } else {
+    if (!loading && data) {
       let providerData = null;
       data.forEach((datum) => {
         if (datum.name === provider) {
@@ -55,12 +48,20 @@ export const ServicePage = () => {
           return;
         }
       });
-      if (providerData) setPageData(service, providerData.apis);
+      if (providerData) {
+        setPageData(service, providerData.apis);
+      } else {
+        setNoDataFound(true);
+        console.log("no data found");
+      }
     }
-  }, [data, error, loading, provider, service, setPageData]);
+  }, [data, loading, provider, service, setPageData]);
 
   return (
     <>
+      {!serviceData && noDataFound && (
+        <div className="display-msg-service">Invalid URL! No data found</div>
+      )}
       {serviceData && serviceData.info && (
         <div className="main-service">
           <header>

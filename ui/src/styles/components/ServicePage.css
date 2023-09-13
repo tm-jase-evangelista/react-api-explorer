@@ -49,3 +49,12 @@ header > img {
   padding-top: 1em;
   padding-bottom: 3em;
 }
+
+.display-msg-service{
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  font-size: 2em;
+}

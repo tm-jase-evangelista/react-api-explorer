@@ -1,10 +1,9 @@
 import "../styles/components/MainPage.css";
-import "../styles/global.css";
 import { useState } from "react";
 import { Navbar } from "./Navbar";
 import { Dropdown } from "./Dropdown";
-import { useDataContext } from "../utils/DataContext";
-import { useNavbarContext } from "../utils/NavbarContext";
+import { useDataContext } from "../contexts/DataContext";
+import { useNavbarContext } from "../contexts/NavbarContext";
 
 export const MainPage = () => {
   const { data, loading, error } = useDataContext();
@@ -15,32 +14,30 @@ export const MainPage = () => {
     setNavbarToggle(!isNavbarToggled);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error.toString()}</div>;
-  }
-
   return (
     <div className="main-page">
-      {isNavbarToggled && (
+      {loading && <div className="display-msg">Loading</div>}
+      {error && <div className="display-msg">{error.toString()}</div>}
+      {!loading && !error && data && (
         <>
-          <div className="overlay" onClick={handleOnClick} />
-          <Navbar>
-            <div>
-              {data &&
-                data.map((apiData) => {
-                  return <Dropdown key={apiData.name} data={apiData} />;
-                })}
-            </div>
-          </Navbar>
+          {isNavbarToggled && (
+            <>
+              <div className="overlay" onClick={handleOnClick} />
+              <Navbar>
+                <div>
+                  {data &&
+                    data.map((apiData) => {
+                      return <Dropdown key={apiData.name} data={apiData} />;
+                    })}
+                </div>
+              </Navbar>
+            </>
+          )}
+          <button className="btn-primary" onClick={handleOnClick}>
+            Explore web APIs
+          </button>
         </>
       )}
-      <button className="btn-primary" onClick={handleOnClick}>
-        Explore web APIs
-      </button>
     </div>
   );
 };
