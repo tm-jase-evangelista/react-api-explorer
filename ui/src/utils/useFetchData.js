@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { fetchAllProviderInfo } from "./FetchDataHelpers";
-import { ITEMS_PER_PAGE } from "./constants";
-
-// TODO: move to a .env
-const API_PROVIDER_BASE_URL = "https://api.apis.guru/v2";
+import { API_GURU_BASE_URL, ITEMS_PER_PAGE } from "./constants";
 
 export const useFetchData = () => {
   const [data, setData] = useState(null);
@@ -15,7 +12,7 @@ export const useFetchData = () => {
 
   const fetchData = useCallback(() => {
     axios
-      .get(`${API_PROVIDER_BASE_URL}/providers.json`)
+      .get(`${API_GURU_BASE_URL}/providers.json`)
       .then((res) => {
         const data = res.data.data;
         setListProvider(data);

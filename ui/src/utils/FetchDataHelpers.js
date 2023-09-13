@@ -1,9 +1,8 @@
 import axios from "axios";
-
-const API_PROVIDER_BASE_URL = "https://api.apis.guru/v2";
+import { API_GURU_BASE_URL } from "./constants";
 
 export const fetchProviderInfo = (name) => {
-  const url = `${API_PROVIDER_BASE_URL}/${name}.json`;
+  const url = `${API_GURU_BASE_URL}/${name}.json`;
   const config = { api_name: name };
   return new Promise((resolve, reject) => {
     axios
