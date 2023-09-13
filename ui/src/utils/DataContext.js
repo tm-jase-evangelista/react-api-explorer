@@ -4,9 +4,21 @@ import { useFetchData } from "./useFetchData";
 export const DataContext = createContext(null);
 
 export const DataProvider = ({ children }) => {
-  const { data, loading, error } = useFetchData();
+  const { data, setData, loading, error, listProvider, pageNum, setPageNum } =
+    useFetchData();
+
   return (
-    <DataContext.Provider value={{ data, loading, error }}>
+    <DataContext.Provider
+      value={{
+        data,
+        setData,
+        loading,
+        error,
+        listProvider,
+        pageNum,
+        setPageNum,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
