@@ -12,6 +12,7 @@ export const ServicePage = () => {
 
   const [serviceData, setServiceData] = useState(null);
   const [infoList, setInfoList] = useState(null);
+  const [noDataFound, setNoDataFound] = useState(false);
 
   const iterateThroughObject = (obj) => {
     const keyValuePairs = [];
@@ -32,6 +33,9 @@ export const ServicePage = () => {
         const infoList = iterateThroughObject(serviceData.info.contact);
         setInfoList(infoList);
       }
+    } else {
+      setNoDataFound(true);
+      console.log("no data found");
     }
   }, []);
 
@@ -44,12 +48,20 @@ export const ServicePage = () => {
           return;
         }
       });
-      if (providerData) setPageData(service, providerData.apis);
+      if (providerData) {
+        setPageData(service, providerData.apis);
+      } else {
+        setNoDataFound(true);
+        console.log("no data found");
+      }
     }
   }, [data, loading, provider, service, setPageData]);
 
   return (
     <>
+      {!serviceData && noDataFound && (
+        <div className="display-msg-service">Invalid URL! No data found</div>
+      )}
       {serviceData && serviceData.info && (
         <div className="main-service">
           <header>
