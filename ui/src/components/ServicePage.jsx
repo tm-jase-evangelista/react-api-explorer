@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDataContext } from "../utils/DataContext";
+import { useDataContext } from "../contexts/DataContext";
 
 import "../styles/components/ServicePage.css";
-import { useNavbarContext } from "../utils/NavbarContext";
+import { useNavbarContext } from "../contexts/NavbarContext";
 
 export const ServicePage = () => {
   const { provider, service } = useParams();

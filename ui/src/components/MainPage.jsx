@@ -3,8 +3,8 @@ import "../styles/global.css";
 import { useState } from "react";
 import { Navbar } from "./Navbar";
 import { Dropdown } from "./Dropdown";
-import { useDataContext } from "../utils/DataContext";
-import { useNavbarContext } from "../utils/NavbarContext";
+import { useDataContext } from "../contexts/DataContext";
+import { useNavbarContext } from "../contexts/NavbarContext";
 
 export const MainPage = () => {
   const { data, loading, error } = useDataContext();

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useFetchData } from "./useFetchData";
+import { useFetchData } from "../utils/useFetchData";
 
 export const DataContext = createContext(null);
 

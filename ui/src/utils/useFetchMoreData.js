@@ -1,4 +1,4 @@
-import { useDataContext } from "./DataContext";
+import { useDataContext } from "../contexts/DataContext";
 import { fetchProviderInfo } from "./FetchDataHelpers";
 import { ITEMS_PER_PAGE } from "./constants";
 
