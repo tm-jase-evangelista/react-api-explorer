@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDataContext } from "../contexts/DataContext";
@@ -8,7 +7,7 @@ import { useNavbarContext } from "../contexts/NavbarContext";
 
 export const ServicePage = () => {
   const { provider, service } = useParams();
-  const { data, loading, error } = useDataContext();
+  const { data, loading } = useDataContext();
   const { setNavbarToggle } = useNavbarContext();
 
   const [serviceData, setServiceData] = useState(null);
@@ -37,17 +36,7 @@ export const ServicePage = () => {
   }, []);
 
   useEffect(() => {
-    if (!data && !loading && !error) {
-      axios
-        .get(`https://api.apis.guru/v2/${provider}.json`)
-        .then((res) => {
-          const apis = res.data.apis;
-          setPageData(service, apis);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } else {
+    if (!loading && data) {
       let providerData = null;
       data.forEach((datum) => {
         if (datum.name === provider) {
@@ -57,7 +46,7 @@ export const ServicePage = () => {
       });
       if (providerData) setPageData(service, providerData.apis);
     }
-  }, [data, error, loading, provider, service, setPageData]);
+  }, [data, loading, provider, service, setPageData]);
 
   return (
     <>
