@@ -16,7 +16,7 @@ export const MainPage = () => {
 
   return (
     <div className="main-page">
-      {loading && <div className="display-msg">Loading...</div>}
+      {loading && <div className="display-msg">Loading</div>}
       {error && <div className="display-msg">{error.toString()}</div>}
       {!loading && !error && data && (
         <>
