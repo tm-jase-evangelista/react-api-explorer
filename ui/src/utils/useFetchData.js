@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { fetchAllProviderInfo } from "./FetchDataHelpers";
+import { fetchAllProviderInfo } from "./helpers";
 import { API_GURU_BASE_URL, ITEMS_PER_PAGE } from "./constants";
 
 export const useFetchData = () => {

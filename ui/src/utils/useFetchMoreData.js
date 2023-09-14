@@ -1,5 +1,5 @@
 import { useDataContext } from "../contexts/DataContext";
-import { fetchProviderInfo } from "./FetchDataHelpers";
+import { fetchProviderInfo } from "./helpers";
 import { ITEMS_PER_PAGE } from "./constants";
 
 export const useFetchMoreData = () => {
