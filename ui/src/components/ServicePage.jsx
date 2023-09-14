@@ -35,7 +35,6 @@ export const ServicePage = () => {
       }
     } else {
       setNoDataFound(true);
-      console.log("no data found");
     }
   }, []);
 
@@ -52,7 +51,6 @@ export const ServicePage = () => {
         setPageData(service, providerData.apis);
       } else {
         setNoDataFound(true);
-        console.log("no data found");
       }
     }
   }, [data, loading, provider, service, setPageData]);
