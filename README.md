@@ -29,3 +29,4 @@ npm install
 npm start
 ```
 
+4. access the application at `http://localhost:3000`
