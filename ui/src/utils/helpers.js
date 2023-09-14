@@ -31,3 +31,14 @@ export const fetchAllProviderInfo = (entries, setData, setLoading) => {
       console.error("Error fetching provider info:", error);
     });
 };
+
+export const iterateThroughObject = (obj) => {
+  const keyValuePairs = [];
+  Object.entries(obj).forEach(([key, value]) => {
+    keyValuePairs.push({
+      key: key,
+      value: value,
+    });
+  });
+  return keyValuePairs;
+};
