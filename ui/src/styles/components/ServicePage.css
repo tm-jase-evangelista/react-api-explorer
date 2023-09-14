@@ -4,6 +4,7 @@
   align-items: center;
   color: white;
   height: 100%;
+  overflow: auto;
 }
 
 h1, h2 {

@@ -2,7 +2,6 @@ import { MainPage } from "./components/MainPage";
 import { ServicePage } from "./components/ServicePage";
 import { Routes, Route } from "react-router-dom";
 import { DataProvider } from "./contexts/DataContext";
-import "./styles/App.css";
 import { NavbarProvider } from "./contexts/NavbarContext";
 
 const App = () => {
