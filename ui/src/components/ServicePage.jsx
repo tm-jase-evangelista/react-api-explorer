@@ -1,9 +1,11 @@
+import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDataContext } from "../contexts/DataContext";
 
 import "../styles/components/ServicePage.css";
 import { useNavbarContext } from "../contexts/NavbarContext";
+import { API_GURU_BASE_URL } from "../utils/constants";
 
 export const ServicePage = () => {
   const { provider, service } = useParams();
@@ -50,7 +52,15 @@ export const ServicePage = () => {
       if (providerData) {
         setPageData(service, providerData.apis);
       } else {
-        setNoDataFound(true);
+        axios
+          .get(`${API_GURU_BASE_URL}/${provider}.json`)
+          .then((res) => {
+            setPageData(service, res.data.apis);
+          })
+          .catch((error) => {
+            setNoDataFound(true);
+            console.error(error);
+          });
       }
     }
   }, [data, loading, provider, service, setPageData]);
